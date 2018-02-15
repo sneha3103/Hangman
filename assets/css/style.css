@@ -1,0 +1,44 @@
+body {
+    background-image: url("../images/travel.jpg");
+}
+
+h1 {
+    text-align: center;
+    color: #411109;
+    font-size: 56px;
+}
+
+.country {
+    font-weight: bold;
+    text-align: center;
+    font-size: 21px;
+    color: #190603;
+}
+
+#currentword {
+    text-align: center;
+    font-weight: bold;
+    margin-top: 70px;
+    font-size: 33px;
+}
+
+#wins1 {
+    text-align: center;
+    font-weight: bold;
+    margin-top: 70px;
+    font-size: 33px;
+}
+
+#guesses1 {
+    text-align: center;
+    font-weight: bold;
+    margin-top: 70px;
+    font-size: 33px;
+}
+
+#userguesses {
+    text-align: center;
+    font-weight: bold;
+    margin-top: 70px;
+    font-size: 33px;
+}

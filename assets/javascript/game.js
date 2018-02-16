@@ -22,7 +22,7 @@ function game () {
     numBlank = lettersinCountry.length;
 
     //Need to reset for each round
-    guessesLeft = 0;
+    guessesLeft = 10;
     wrongGuesses = [];
     blankandcorrect =[];
 
@@ -37,10 +37,9 @@ function game () {
     document.getElementById("guesses1").innerHTML = "Guesses Left: " + guessesLeft;
     document.getElementById("wins1").innerHTML = "Wins: " +  winCount;
     
-
+    console.log(numBlank);
     console.log(selectedCountry); 
     console.log(lettersinCountry);
-    console.log(numBlank);
     console.log(blankandcorrect);
 }
 
@@ -67,7 +66,7 @@ function checkLetter(letter) {
 
     else {
         wrongGuesses.push(letter);
-        guesses1--
+        guessesLeft--
     }
 
     console.log(blankandcorrect);
@@ -75,6 +74,32 @@ function checkLetter(letter) {
 }
 
 // This is for the function to iterate and for it to reflect on the win count and guesses left. 
+function completedRound () {
+    console.log("Win count: " + winCount + " | Letters Already Guessed: " + wrongGuesses + " | Guesses Left " + guessesLeft);
+
+    document.getElementById("guesses1").innerHTML = "Guesses Left: " + guessesLeft;
+    document.getElementById("currentword").innerHTML = "Current Word: " + blankandcorrect.join(" ");
+    document.getElementById("userguesses").innerHTML  ="Letters already guessed: " + wrongGuesses.join(" , ");
+
+    //Need to check if user has won
+    if(lettersinCountry.toString() == blankandcorrect.toString()) {
+        winCount++;
+        alert("Yay! You won!!");
+
+        document.getElementById("wins1").innerHTML = winCount;
+
+        game();
+    }
+
+    else if (guessesLeft == 0) {
+        wrongGuesses++;
+        alert("You lost");
+
+        document.getElementById("guesses1").innerHTML = wrongGuesses;
+
+        game();
+    }
+}   
 
 game ();
 
@@ -82,6 +107,7 @@ game ();
  document.onkeyup = function(event) {
     var letterPicked = String.fromCharCode(event.keyCode).toLowerCase(); 
     checkLetter(letterPicked);
+    completedRound();
 
     console.log(letterPicked);
  }
